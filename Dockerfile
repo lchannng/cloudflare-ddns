@@ -1,6 +1,6 @@
-FROM golang:1.13-alpine AS build-env
+FROM golang:alpine AS build-env
 WORKDIR /go/src/github.com/hugomd/cloudflare-ddns/
-RUN apk add ca-certificates
+RUN apk add git ca-certificates
 ADD . /go/src/github.com/hugomd/cloudflare-ddns/
 RUN cd /go/src/github.com/hugomd/cloudflare-ddns && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
